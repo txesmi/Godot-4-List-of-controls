@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq0g7p3o8j2ex"]
+
+[ext_resource type="Script" path="res://scripts/control_list.gd" id="1_v7k7k"]
+[ext_resource type="StyleBox" uid="uid://bw3wf61urj8ff" path="res://theme/theme_grabber_highlight.tres" id="2_8csqu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4y8md"]
+
+[node name="ControlList" type="PanelContainer"]
+custom_minimum_size = Vector2(200, 26)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 26.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4y8md")
+script = ExtResource("1_v7k7k")
+
+[node name="Container" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 26)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Items" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 1
+
+[node name="ScrollBar" type="VScrollBar" parent="Container"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/grabber_highlight = ExtResource("2_8csqu")
+theme_override_styles/grabber_pressed = ExtResource("2_8csqu")
+custom_step = 1.0
+
+[connection signal="value_changed" from="Container/ScrollBar" to="." method="build_list"]

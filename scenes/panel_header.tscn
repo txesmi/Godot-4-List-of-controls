@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbtmwudo4yndv"]
+
+[ext_resource type="StyleBox" uid="uid://dcooxba7wqcw6" path="res://theme/theme_panel_header.tres" id="1_axpus"]
+[ext_resource type="Script" path="res://scripts/panel_header.gd" id="2_ktoei"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_utgpi"]
+content_margin_left = 6.0
+
+[node name="PanelHeader" type="Panel"]
+custom_minimum_size = Vector2(0, 34)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 34.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("1_axpus")
+script = ExtResource("2_ktoei")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_utgpi")
+text = "Title"
+justification_flags = 0
+text_overrun_behavior = 1
+
+[node name="ExitButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.556863, 0.556863, 0.556863, 1)
+theme_override_colors/font_color = Color(0.556953, 0.556953, 0.556953, 1)
+theme_override_font_sizes/font_size = 18
+action_mode = 0
+text = "☓"
+flat = true
+
+[connection signal="pressed" from="HBoxContainer/ExitButton" to="." method="emit_signal" binds= ["exit_queue"]]

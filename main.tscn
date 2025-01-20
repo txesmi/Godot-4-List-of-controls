@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://saih722rhw34"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_02lrt"]
+[ext_resource type="StyleBox" uid="uid://tl03glic6n31" path="res://theme/theme_panel_background.tres" id="2_wgw1q"]
+[ext_resource type="PackedScene" uid="uid://bbtmwudo4yndv" path="res://scenes/panel_header.tscn" id="4_n3fgo"]
+[ext_resource type="PackedScene" uid="uid://dq0g7p3o8j2ex" path="res://scenes/control_list.tscn" id="5_gf8gm"]
+[ext_resource type="PackedScene" uid="uid://bixdifjd6wvlp" path="res://scenes/control_list_item.tscn" id="5_h1qj7"]
+
+[node name="Main" type="CanvasLayer"]
+script = ExtResource("1_02lrt")
+
+[node name="TestPanel" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -196.0
+offset_right = 300.0
+offset_bottom = 198.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("2_wgw1q")
+
+[node name="PanelHeader" parent="TestPanel" instance=ExtResource("4_n3fgo")]
+layout_mode = 2
+title = "My new title"
+
+[node name="ControlList" parent="TestPanel" instance=ExtResource("5_gf8gm")]
+custom_minimum_size = Vector2(592, 351)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+item_pattern = ExtResource("5_h1qj7")
+page = 11
+
+[connection signal="edit_object_name" from="." to="." method="_on_edit_object_name"]
+[connection signal="exit_queue" from="TestPanel/PanelHeader" to="." method="_on_panel_header_exit_queue"]
+[connection signal="slot_clicked" from="TestPanel/ControlList" to="." method="_on_control_list_slot_clicked"]

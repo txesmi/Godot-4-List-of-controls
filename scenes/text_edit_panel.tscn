@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr4umlpfgdq6w"]
+
+[ext_resource type="Script" path="res://scripts/text_edit_panel.gd" id="1_4poa6"]
+[ext_resource type="StyleBox" uid="uid://tl03glic6n31" path="res://theme/theme_panel_background.tres" id="2_hdgof"]
+[ext_resource type="PackedScene" uid="uid://bbtmwudo4yndv" path="res://scenes/panel_header.tscn" id="3_of45n"]
+
+[node name="TextEditPanel" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 8
+color = Color(0, 0, 0, 0.313726)
+script = ExtResource("1_4poa6")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(320, 78)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_right = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_hdgof")
+
+[node name="PanelHeader" parent="Panel" instance=ExtResource("3_of45n")]
+layout_mode = 1
+title = "Edit name"
+
+[node name="LineEdit" type="LineEdit" parent="Panel"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+offset_left = 6.0
+offset_top = 38.0
+offset_right = 314.0
+offset_bottom = 74.0
+size_flags_vertical = 8
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.133196, 0.133196, 0.133196, 1)
+placeholder_text = "Write something here"
+context_menu_enabled = false
+clear_button_enabled = true
+flat = true
+caret_blink = true
+caret_blink_interval = 0.35
