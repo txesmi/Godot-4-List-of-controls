@@ -20,7 +20,7 @@ It also needs a SignaledArray to populate the list.
 It rebuilds the entire list when it receives the *signaled_array_changed* signal.  
 It manages the visibility and size of the scroll bar.
 
-### scenes/control_list_item.gd  
+### scenes/control_list_item.tscn  
 A custom pattern to be instantiated to form the control list.  
 It is a @tool, so it is shown in the editor.  
 Theoretically, it can be of any kind. Its functionality must be defined based on its use.  
